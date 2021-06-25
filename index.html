@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AckyStackCMS JS工具库测试页面</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<script type="module">
+  import AscUtils from './src/index'
+
+  const ascu = new AscUtils({
+    feedbacks: {
+      apiFeedbacks: {
+        onSuccess: (msg) => {console.log('[Api Request]: ' + msg)},
+        onError: (msg) => {console.log('[Api Request]: ' + msg)},
+        onWarning: (msg) => {console.log('[Api Request]: ' + msg)},
+        onInfo: (msg) => {console.log('[Api Request]: ' + msg)},
+        onUnAuthorized: (msg) => {console.log('[Api Request]: UnAuthorized ' + msg)},
+      },
+      formValidationFeedbacks: {
+        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)},
+        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)}
+      }
+    }
+  })
+
+  ascu.request().get('https://www.baidu.com/').then(res => {
+    console.log(res)
+  })
+</script>
+</body>
+</html>

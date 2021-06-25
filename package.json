@@ -1,0 +1,32 @@
+{
+  "name": "@ackystack/asc-js-utils",
+  "version": "1.0.0",
+  "author": "Xuanzi An",
+  "description": "AckyStack CMS JS Utils",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@types/qs": "^6.9.6",
+    "@vitejs/plugin-legacy": "^1.4.2",
+    "typescript": "^4.3.4",
+    "vite": "^2.3.8",
+    "vite-aliases": "^0.8.2",
+    "vite-plugin-banner": "^0.1.3",
+    "vite-plugin-compress": "^2.1.0",
+    "vite-plugin-dts": "^0.5.1"
+  },
+  "dependencies": {
+    "@types/node": "^15.12.4",
+    "apisauce": "^2.1.1",
+    "qs": "^6.10.1"
+  }
+}
