@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-<script src="./dist/asc_js_utils.iife.js"></script>
+<script src="../dist/asc_js_utils.iife.js"></script>
 <script>
   const ascu = new AscUtils({
     feedbacks: {
@@ -23,7 +23,9 @@
       }
     }
   })
-
+  ascu.request().get('https://www.baidu.com/').then(res => {
+    console.log(res)
+  })
 </script>
 </body>
 </html>
