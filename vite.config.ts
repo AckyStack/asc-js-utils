@@ -29,7 +29,7 @@ export default defineConfig({
     Banner(`/**\n * name: AckyStackCMS Js Utils\n * version: v1.0.0\n * description: AckyStack CMS JS Utils\n * author: Xuanzi An\n */`),
     dts({
       exclude: ['vite.config.ts'],
-      insertTypesEntry: true
+      insertTypesEntry: true,
     })
   ],
   resolve: {
