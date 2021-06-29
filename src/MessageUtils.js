@@ -3,7 +3,7 @@ export default class MessageUtils {
     this._prefixCls = 'i-message-'
     this._default = {
       top: 16,
-      duration: 2
+      duration: 3
     }
   }
 
@@ -192,7 +192,7 @@ export default class MessageUtils {
   _resetDefault () {
     this._default = {
       top: 16,
-      duration: 2
+      duration: 3
     }
   }
 }
