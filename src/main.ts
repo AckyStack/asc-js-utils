@@ -1,5 +1,6 @@
-import { AscUtilsConfiguration } from '/#/ascUtils'
-import ApiUtils from './apiUtils'
+import { AscUtilsConfiguration } from '/#/AscUtils'
+import ApiUtils from './ApiUtils'
+import ValidationUtils from './ValidationUtils'
 
 export default class AscUtils {
   private config: AscUtilsConfiguration = {
@@ -12,8 +13,8 @@ export default class AscUtils {
         onUnAuthorized: (msg) => {console.log('[Api Request]: UnAuthorized ' + msg)}
       },
       formValidationFeedbacks: {
-        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)},
-        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)}
+        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)},
+        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)}
       }
     }
   }
@@ -29,11 +30,14 @@ export default class AscUtils {
         }
       }
     }
-    console.log('AscUtils loaded.')
+    console.debug('AscUtils loaded.')
   }
 
   request (baseUrl?: string) {
     return new ApiUtils(this.config.feedbacks!.apiFeedbacks!, baseUrl)
   }
 
+  validation (withAsync?: boolean) {
+    return new ValidationUtils(this.config.feedbacks!.formValidationFeedbacks!, withAsync)
+  }
 }

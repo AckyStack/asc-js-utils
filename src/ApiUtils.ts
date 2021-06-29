@@ -1,5 +1,5 @@
 import { ApiResponse, ApisauceInstance, create } from 'apisauce'
-import { ApiRequestCallback, ApiRequestFeedbackHandlers, AscApiResponse } from '/#/ascUtils'
+import { ApiRequestCallback, ApiRequestFeedbackHandlers, AscApiResponse } from '/#/AscUtils'
 import QueryString from 'qs'
 
 export default class ApiUtils {

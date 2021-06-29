@@ -6,8 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+<input id="test"/>
 <script type="module">
-  import AscUtils from './src/index'
+  import AscUtils from './src/main'
 
   const ascu = new AscUtils({
     feedbacks: {
@@ -19,15 +20,31 @@
         onUnAuthorized: (msg) => {console.log('[Api Request]: UnAuthorized ' + msg)},
       },
       formValidationFeedbacks: {
-        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)},
-        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)}
+        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)},
+        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)}
       }
     }
   })
 
-  ascu.request().get('https://www.baidu.com/').then(res => {
-    console.log(res)
-  })
+  // ascu.request().get('https://www.baidu.com/').then(res => {
+  //   console.log(res)
+  // })
+  const vr = [
+    {
+      element: document.getElementById('test'),
+      rules: [
+        {
+          validatorName: 'required',
+          invalidMessage: '该项为必填项.'
+        },
+        {
+          validatorName: 'email',
+          invalidMessage: '必须为邮箱.'
+        }
+      ]
+    }
+  ]
+  const v = ascu.validation().init(vr)
 </script>
 </body>
 </html>

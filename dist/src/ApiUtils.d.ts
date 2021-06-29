@@ -1,5 +1,5 @@
 import { ApisauceInstance } from 'apisauce';
-import { ApiRequestCallback, ApiRequestFeedbackHandlers } from '../typesascUtils';
+import { ApiRequestCallback, ApiRequestFeedbackHandlers } from '../typesAscUtils';
 export default class ApiUtils {
     private readonly _apisauceInstance;
     private readonly _feedbackHandlers;
