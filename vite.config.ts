@@ -25,13 +25,11 @@ export default defineConfig({
     'process.env': {}
   },
   plugins: [
-    // legacy({
-    //   targets: ['defaults', 'not IE 11']
-    // }),
     ViteAliases(),
     Banner(`/**\n * name: AckyStackCMS Js Utils\n * version: v1.0.0\n * description: AckyStack CMS JS Utils\n * author: Xuanzi An\n */`),
     dts({
-      exclude: ['vite.config.ts']
+      exclude: ['vite.config.ts'],
+      insertTypesEntry: true
     })
   ],
   resolve: {

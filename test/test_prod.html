@@ -6,26 +6,36 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+<input id="test"/>
 <script src="../dist/asc_js_utils.iife.js"></script>
 <script>
-  const ascu = new AscUtils({
-    feedbacks: {
-      apiFeedbacks: {
-        onSuccess: (msg) => {console.log('[Api Request]: ' + msg)},
-        onError: (msg) => {console.log('[Api Request]: ' + msg)},
-        onWarning: (msg) => {console.log('[Api Request]: ' + msg)},
-        onInfo: (msg) => {console.log('[Api Request]: ' + msg)},
-        onUnAuthorized: (msg) => {console.log('[Api Request]: UnAuthorized ' + msg)},
-      },
-      formValidationFeedbacks: {
-        onValid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)},
-        onInvalid: (result) => {console.log(`[Form Validation]: (${result.inputElementId}) (${result.isValid}) ${result.message}`)}
-      }
+  $ascu.setFormValidationFeedbacks({
+    onValid: (result) => {
+      console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)
+      $ascu.msg().success(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)
+    },
+    onInvalid: (result) => {
+      console.log(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)
+      $ascu.msg().error(`[Form Validation]: (${result.inputElement.id}) (${result.isValid}) ${result.message}`)
     }
   })
-  ascu.request().get('https://www.baidu.com/').then(res => {
-    console.log(res)
-  })
+
+  const vr = [
+    {
+      element: document.getElementById('test'),
+      rules: [
+        {
+          validatorName: 'required',
+          invalidMessage: '该项为必填项.'
+        },
+        {
+          validatorName: 'email',
+          invalidMessage: '必须为邮箱.'
+        }
+      ]
+    }
+  ]
+  const v = $ascu.validation().init(vr)
 </script>
 </body>
 </html>
