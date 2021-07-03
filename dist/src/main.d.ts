@@ -11,4 +11,9 @@ export default class AscUtils {
     request(baseUrl?: string): ApiUtils;
     validation(withAsync?: boolean): ValidationUtils;
     msg(): MessageUtils;
+    md5(str: string): string;
+    sha256(str: string): string;
+    encryptPassword(password: string, username: string): string;
+    base64Encode(str: string): string;
+    base64Decode(str: string): string;
 }

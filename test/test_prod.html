@@ -36,6 +36,12 @@
     }
   ]
   const v = $ascu.validation().init(vr)
+
+  console.log($ascu.md5('hello!'))
+  console.log($ascu.sha256('hello!'))
+  console.log($ascu.base64Encode('hello!'))
+  console.log($ascu.base64Decode('aGVsbG8h'))
+  console.log($ascu.encryptPassword('hello!'))
 </script>
 </body>
 </html>

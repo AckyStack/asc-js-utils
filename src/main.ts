@@ -2,6 +2,10 @@ import { ApiRequestFeedbackHandlers, AscUtilsConfiguration, FormValidationFeedba
 import ApiUtils from './ApiUtils'
 import ValidationUtils from './ValidationUtils'
 import MessageUtils from './MessageUtils'
+import { Md5 } from 'ts-md5'
+import CryptoJS from 'crypto-js'
+import BcryptJS from 'bcryptjs'
+import { Base64 } from 'js-base64'
 
 export default class AscUtils {
   private _config: AscUtilsConfiguration = {
@@ -66,6 +70,27 @@ export default class AscUtils {
 
   msg (): MessageUtils {
     return this.msgu
+  }
+
+  md5 (str: string): string {
+    return Md5.hashStr(str).toString()
+  }
+
+  sha256 (str: string): string {
+    return CryptoJS.SHA256(str).toString()
+  }
+
+  encryptPassword (password: string, username: string): string {
+    const salt = '$2a$12$' + this.sha256(`AckyStack|${username}|${password}`).toString().substring(0, 22)
+    return this.md5(BcryptJS.hashSync(password, salt))
+  }
+
+  base64Encode (str: string): string {
+    return Base64.encode(str)
+  }
+
+  base64Decode (str: string): string {
+    return Base64.decode(str)
   }
 }
 
