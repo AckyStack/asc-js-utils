@@ -57,11 +57,13 @@ export default class ValidationUtils {
     }
     if (element === undefined) {
       resultResponse.message = '无效输入参数!'
+      this.validateResult = false
       this._feedbackHandlers.onInvalid(resultResponse)
       return
     }
     if (rules.length === 0) {
       resultResponse.message = '无效的规则集!'
+      this.validateResult = false
       this._feedbackHandlers.onInvalid(resultResponse)
       return
     }
@@ -86,7 +88,7 @@ export default class ValidationUtils {
         }
       }
     }
-
+    this.validateResult = true
     resultResponse.isValid = true
     resultResponse.message = 'success'
     this._feedbackHandlers.onValid(resultResponse)
