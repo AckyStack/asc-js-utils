@@ -4,7 +4,6 @@ import ValidationUtils from './ValidationUtils'
 import MessageUtils from './MessageUtils'
 import { Md5 } from 'ts-md5'
 import CryptoJS from 'crypto-js'
-import BcryptJS from 'bcryptjs'
 import { Base64 } from 'js-base64'
 
 export default class AscUtils {
@@ -81,8 +80,8 @@ export default class AscUtils {
   }
 
   encryptPassword (password: string, username: string): string {
-    const salt = '$2a$12$' + this.sha256(`AckyStack|${username}|${password}`).toString().substring(0, 22)
-    return this.md5(BcryptJS.hashSync(password, salt))
+    const salt = '9.$![i' + this.sha256(`AckyStack|${username}|${password}`).toString()
+    return this.md5(this.sha256(password + salt))
   }
 
   base64Encode (str: string): string {
